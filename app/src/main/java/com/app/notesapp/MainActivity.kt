@@ -1,4 +1,5 @@
 package com.app.notesapp
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -10,14 +11,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.elevation = 0F
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment?
-
-        if (navHostFragment != null){
-            val appBarConfiguration = AppBarConfiguration(navHostFragment.navController.graph)
-            setupActionBarWithNavController(navHostFragment.navController, appBarConfiguration)
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

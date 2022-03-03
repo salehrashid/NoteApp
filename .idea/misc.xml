@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/layout/fragment_update.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/layout_menu_save.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/row_item_notes.xml" value="0.7743506493506493" />
+        <entry key="app/src/main/res/menu/menu_home.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/menu/menu_save.xml" value="0.35052083333333334" />
       </map>
     </option>
   </component>
