@@ -17,4 +17,6 @@
     <string name="txt_priority_high">Priority high</string>
     <string name="txt_delete_all">Delete All</string>
     <string name="txt_save">Save</string>
+    <string name="txt_edit">edit</string>
+    <string name="txt_delete">delete</string>
 </resources>

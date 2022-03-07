@@ -17,16 +17,12 @@ class AddFragment : Fragment() {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding as FragmentAddBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
+        _binding = FragmentAddBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -41,8 +37,8 @@ class AddFragment : Fragment() {
         binding.toolbarAdd.apply {
             setupWithNavController(navController, appBarConfiguration)
             (requireActivity() as MainActivity).setSupportActionBar(this)
-            navController.addOnDestinationChangedListener{_, destination, _->
-                when (destination.id){
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
                     R.id.addFragment -> this.setNavigationIcon(R.drawable.ic_left_arrow)
                 }
             }

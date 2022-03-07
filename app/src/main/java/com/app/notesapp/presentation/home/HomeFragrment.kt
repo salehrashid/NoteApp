@@ -35,11 +35,15 @@ class HomeFragrment : Fragment() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbarHome.apply {
             setupWithNavController(navController, appBarConfiguration)
+            //requireActivity adalah mengambil activity dari mana?, misal dari main activity dll
             (requireActivity() as MainActivity).setSupportActionBar(this)
         }
 
-        binding.fab.setOnClickListener {
+        binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragrment_to_addFragment2)
+        }
+        binding.btnGoToDetail.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragrment_to_detailFragment2)
         }
     }
 
