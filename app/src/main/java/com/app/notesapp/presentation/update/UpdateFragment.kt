@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.app.notesapp.R
 import com.app.notesapp.databinding.FragmentUpdateBinding
 import com.app.notesapp.utils.ExtensionFunctions.setActionBar
+import com.app.notesapp.utils.ExtensionFunctions.setPriorityColor
 
 class UpdateFragment : Fragment() {
     private var _binding: FragmentUpdateBinding? = null
@@ -27,9 +28,11 @@ class UpdateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        binding.toolbarUpdate.setActionBar(requireActivity())
-
-        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            toolbarUpdate.setActionBar(requireActivity())
+            spinnerPrioritiesUpdate.onItemSelectedListener =
+                context?.let { setPriorityColor(it, priorityIndicator) }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

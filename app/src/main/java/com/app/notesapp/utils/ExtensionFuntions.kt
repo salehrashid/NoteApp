@@ -1,7 +1,8 @@
 package com.app.notesapp.utils
 
 import android.content.Context
-import androidx.appcompat.widget.AppCompatSpinner
+import android.view.View
+import android.widget.AdapterView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -27,16 +28,25 @@ object ExtensionFunctions {
         }
     }
 
-    fun AppCompatSpinner.setPriorityColor(context: Context, cardView: CardView) {
-        val arrPriority = resources.getStringArray(R.array.priorities)
-        val pink = ContextCompat.getColor(context, R.color.pink)
-        val yellow = ContextCompat.getColor(context, R.color.yellow)
-        val green = ContextCompat.getColor(context, R.color.green)
+    fun setPriorityColor(context: Context, cardView: CardView): AdapterView.OnItemSelectedListener {
+       val listener = object : AdapterView.OnItemSelectedListener {
 
-        when (this.selectedItem) {
-            arrPriority[0] -> cardView.setCardBackgroundColor(pink)
-            arrPriority[1] -> cardView.setCardBackgroundColor(yellow)
-            arrPriority[2] -> cardView.setCardBackgroundColor(green)
+            val pink = ContextCompat.getColor(context, R.color.pink)
+            val yellow = ContextCompat.getColor(context, R.color.yellow)
+            val green = ContextCompat.getColor(context, R.color.green)
+
+            override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when (position) {
+                    0 -> cardView.setCardBackgroundColor(pink)
+                    1 -> cardView.setCardBackgroundColor(yellow)
+                    2 -> cardView.setCardBackgroundColor(green)
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
         }
+        return listener
     }
 }

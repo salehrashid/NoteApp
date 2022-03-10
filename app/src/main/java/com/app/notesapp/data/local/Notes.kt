@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 
 data class Notes(
     @PrimaryKey(autoGenerate = true)
-    val id: String,
+    val id: Int,
     val title: String,
     val desc: String,
     val date: String,
