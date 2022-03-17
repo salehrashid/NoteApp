@@ -7,20 +7,20 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.app.notesapp.MainActivity
 import com.app.notesapp.R
+import com.app.notesapp.data.local.entity.Notes
 import com.app.notesapp.databinding.FragmentHomeBinding
 import com.app.notesapp.presentation.NotesViewModel
+import com.app.notesapp.utils.ExtensionFunctions.setActionBar
 
 class HomeFragrment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding as FragmentHomeBinding
 
     private val homeViewModel: NotesViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val homeAdapter by lazy { HomeAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,22 +32,42 @@ class HomeFragrment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
         setHasOptionsMenu(true)
 
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbarHome.apply {
-            setupWithNavController(navController, appBarConfiguration)
-            //requireActivity adalah mengambil activity dari mana?, misal dari main activity dll
-            (requireActivity() as MainActivity).setSupportActionBar(this)
+        binding.apply {
+            toolbarHome.setActionBar(requireActivity())
+
+            fabAdd.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragrment_to_addFragment2)
+            }
+            btnGoToDetail.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragrment_to_detailFragment2)
+            }
         }
 
-        binding.fabAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragrment_to_addFragment2)
+        setUpRecyclerView()
+    }
+
+    private fun setUpRecyclerView() {
+        binding.rvNotes.apply {
+            homeViewModel.getAllNotes.observe(viewLifecycleOwner) {
+                homeAdapter.setData(it)
+            }
+            adapter = homeAdapter
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         }
-        binding.btnGoToDetail.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragrment_to_detailFragment2)
+    }
+
+    private fun checkDataIsEmpty(data: List<Notes>) {
+        binding.apply {
+            if (data.isEmpty()) {
+                imgNoData.visibility = View.VISIBLE
+                rvNotes.visibility = View.INVISIBLE
+            } else {
+                imgNoData.visibility = View.INVISIBLE
+                rvNotes.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -58,6 +78,6 @@ class HomeFragrment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-         _binding = null
+        _binding = null
     }
 }

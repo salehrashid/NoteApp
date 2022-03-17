@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".presentation.home.HomeFragrment">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
