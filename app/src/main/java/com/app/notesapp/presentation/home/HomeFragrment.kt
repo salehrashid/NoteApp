@@ -3,16 +3,20 @@ package com.app.notesapp.presentation.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.app.notesapp.MainActivity
 import com.app.notesapp.R
 import com.app.notesapp.databinding.FragmentHomeBinding
+import com.app.notesapp.presentation.NotesViewModel
 
 class HomeFragrment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding as FragmentHomeBinding
+
+    private val homeViewModel: NotesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

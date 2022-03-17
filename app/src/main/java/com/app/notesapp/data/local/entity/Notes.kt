@@ -1,4 +1,4 @@
-package com.app.notesapp.data.local
+package com.app.notesapp.data.local.entity
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.app.notesapp.R
 import com.app.notesapp.databinding.FragmentUpdateBinding
 import com.app.notesapp.utils.ExtensionFunctions.setActionBar
-import com.app.notesapp.utils.ExtensionFunctions.setPriorityColor
+import com.app.notesapp.utils.HelperFunction.setPriorityColor
 
 class UpdateFragment : Fragment() {
     private var _binding: FragmentUpdateBinding? = null

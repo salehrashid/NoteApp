@@ -1,12 +1,11 @@
 package com.app.notesapp.data.local.room
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.app.notesapp.data.local.Notes
+import androidx.room.*
+import com.app.notesapp.data.local.entity.Notes
 
 @Database(entities = [Notes::class], version = 1, exportSchema = false)
+@TypeConverters(Converter::class)
 abstract class NotesDatabase: RoomDatabase() {
     abstract fun notesDao(): NotesDao
 

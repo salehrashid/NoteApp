@@ -1,4 +1,4 @@
-package com.app.notesapp.data.local
+package com.app.notesapp.data.local.entity
 
 enum class Priority {
     HIGH,
