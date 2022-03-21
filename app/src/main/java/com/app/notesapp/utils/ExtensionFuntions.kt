@@ -1,10 +1,5 @@
 package com.app.notesapp.utils
 
-import android.content.Context
-import android.view.View
-import android.widget.AdapterView
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
