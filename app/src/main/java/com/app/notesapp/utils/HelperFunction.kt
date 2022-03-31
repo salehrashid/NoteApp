@@ -6,20 +6,21 @@ import android.widget.AdapterView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.app.notesapp.R
+import com.app.notesapp.data.local.entity.Priority
 
 object HelperFunction {
     fun setPriorityColor(context: Context, cardView: CardView): AdapterView.OnItemSelectedListener {
         val listener = object : AdapterView.OnItemSelectedListener {
 
-            val pink = ContextCompat.getColor(context, R.color.pink)
+            val lightRed = ContextCompat.getColor(context, R.color.light_red)
             val yellow = ContextCompat.getColor(context, R.color.yellow)
-            val green = ContextCompat.getColor(context, R.color.green)
+            val lightBlue = ContextCompat.getColor(context, R.color.light_blue)
 
             override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (position) {
-                    0 -> cardView.setCardBackgroundColor(pink)
+                    0 -> cardView.setCardBackgroundColor(lightRed)
                     1 -> cardView.setCardBackgroundColor(yellow)
-                    2 -> cardView.setCardBackgroundColor(green)
+                    2 -> cardView.setCardBackgroundColor(lightBlue)
                 }
             }
 
@@ -28,5 +29,15 @@ object HelperFunction {
             }
         }
         return listener
+    }
+
+    fun parseToPriority(context: Context?, priority: String): Priority {
+        val arrayPriority = context?.resources?.getStringArray(R.array.priorities)
+        return when (priority) {
+            arrayPriority?.get(0) -> Priority.HIGH
+            arrayPriority?.get(1) -> Priority.MEDIUM
+            arrayPriority?.get(2) -> Priority.LOW
+            else -> Priority.HIGH
+        }
     }
 }

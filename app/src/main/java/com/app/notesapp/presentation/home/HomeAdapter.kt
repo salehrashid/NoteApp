@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.app.notesapp.R
 import com.app.notesapp.data.local.entity.Notes
-import com.app.notesapp.data.local.entity.Priority
 import com.app.notesapp.databinding.RowItemNotesBinding
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
@@ -23,27 +21,33 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listNotes.get(position)
         holder.binding.apply {
-            tvTitle.text = data.title
-            tvDescription.text = data.desc
-            tvDate.text = data.date
+            mNotes = data
+            //untuk ngasih tau bahwa layoutnya memakai data binding
+            executePendingBindings()
 
-            when (data.priority) {
-                Priority.HIGH -> priorityIndicator.setCardBackgroundColor(
-                    priorityIndicator.context.getColor(
-                        R.color.pink
-                    )
-                )
-                Priority.MEDIUM -> priorityIndicator.setCardBackgroundColor(
-                    priorityIndicator.context.getColor(
-                        R.color.yellow
-                    )
-                )
-                Priority.LOW -> priorityIndicator.setCardBackgroundColor(
-                    priorityIndicator.context.getColor(
-                        R.color.green
-                    )
-                )
-            }
+//            sudah di tambahkan di xml row item baris ke 4
+//            tvTitle.text = data.title
+//            tvDescription.text = data.desc
+//            tvDate.text = data.date
+
+//            sudah ditambahkan di BindingAdapter.kt dan row item
+//            when (data.priority) {
+//                Priority.HIGH -> priorityIndicator.setCardBackgroundColor(
+//                    priorityIndicator.context.getColor(
+//                        R.color.red
+//                    )
+//                )
+//                Priority.MEDIUM -> priorityIndicator.setCardBackgroundColor(
+//                    priorityIndicator.context.getColor(
+//                        R.color.yellow
+//                    )
+//                )
+//                Priority.LOW -> priorityIndicator.setCardBackgroundColor(
+//                    priorityIndicator.context.getColor(
+//                        R.color.green
+//                    )
+//                )
+//            }
         }
     }
 

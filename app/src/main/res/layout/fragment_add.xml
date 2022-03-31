@@ -91,7 +91,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@color/pink"
+                    app:cardBackgroundColor="@color/light_red"
                     app:cardCornerRadius="100dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/spinner_priorities"
@@ -108,7 +108,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/priority_indicator"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -131,7 +133,9 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textSize="16sp" />
+
         </com.google.android.material.card.MaterialCardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText

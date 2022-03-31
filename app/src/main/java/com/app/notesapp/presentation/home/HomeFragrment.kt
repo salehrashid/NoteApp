@@ -140,7 +140,7 @@ class HomeFragrment : Fragment(), SearchView.OnQueryTextListener {
                     homeViewModel.deleteAllData()
                 }
                 .setNegativeButton("No") { _, _ -> }
-                .setNeutralButton("Cancel") { _, _ -> }
+                .setNeutralButton("Cancel") { _, _ -> }.show()
         }
     }
 

@@ -10,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.app.notesapp.R
 import com.app.notesapp.data.local.entity.Notes
-import com.app.notesapp.data.local.entity.Priority
 import com.app.notesapp.databinding.FragmentAddBinding
 import com.app.notesapp.presentation.NotesViewModel
 import com.app.notesapp.utils.ExtensionFunctions.setActionBar
+import com.app.notesapp.utils.HelperFunction.parseToPriority
 import com.app.notesapp.utils.HelperFunction.setPriorityColor
 import java.text.SimpleDateFormat
 import java.util.*
@@ -84,23 +84,13 @@ class AddFragment : Fragment() {
                     title,
                     desc,
                     date,
-                    parseToPriority(priority)
+                    parseToPriority(context, priority)
                 )
                 addViewModel.insertNotes(data)
                 Log.d("AddFragment", "insertNote $data")
                 findNavController().navigate(R.id.action_addFragment_to_homeFragrment)
                 Toast.makeText(context, "Successfully Add Note", Toast.LENGTH_LONG).show()
             }
-        }
-    }
-
-    private fun parseToPriority(priority: String): Priority {
-        val arrayPriority = resources.getStringArray(R.array.priorities)
-        return when (priority) {
-            arrayPriority[0] -> Priority.HIGH
-            arrayPriority[1] -> Priority.MEDIUM
-            arrayPriority[2] -> Priority.LOW
-            else -> Priority.HIGH
         }
     }
 

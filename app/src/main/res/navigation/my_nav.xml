@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragrment_to_addFragment2"
-            app:destination="@id/addFragment" />
+            app:destination="@id/addFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_homeFragrment_to_detailFragment2"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -24,7 +32,9 @@
         tools:layout="@layout/fragment_add">
         <action
             android:id="@+id/action_addFragment_to_homeFragrment"
-            app:destination="@id/homeFragrment" />
+            app:destination="@id/homeFragrment"
+            app:popUpTo="@id/homeFragrment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
@@ -33,7 +43,14 @@
         tools:layout="@layout/fragment_update">
         <action
             android:id="@+id/action_updateFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/detailFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="update"
+            app:argType="com.app.notesapp.data.local.entity.Notes" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -42,9 +59,20 @@
         tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_detailFragment_to_updateFragment2"
-            app:destination="@id/updateFragment" />
+            app:destination="@id/updateFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_detailFragment_to_homeFragrment"
-            app:destination="@id/homeFragrment" />
+            app:destination="@id/homeFragrment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/homeFragrment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="notes"
+            app:argType="com.app.notesapp.data.local.entity.Notes" />
     </fragment>
 </navigation>
