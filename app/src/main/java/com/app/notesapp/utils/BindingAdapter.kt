@@ -1,8 +1,10 @@
 package com.app.notesapp.utils
 
+import android.view.View
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.app.notesapp.R
 import com.app.notesapp.data.local.entity.Notes
@@ -44,6 +46,16 @@ object BindingAdapter {
             Priority.LOW -> {
                 view.setSelection(2)
             }
+        }
+    }
+
+    //yoenas
+    @BindingAdapter("android:emptyDatabase")
+    @JvmStatic
+    fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>){
+        when(emptyDatabase.value){
+            true -> view.visibility = View.VISIBLE
+            else -> view.visibility = View.INVISIBLE
         }
     }
 }
