@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_no_notes"
             android:visibility="visible"
-            android:emptyDatabase="@{mHelperFunction.emptyDatabase}"
             app:layout_constraintBottom_toBottomOf="@+id/rv_notes"
             app:layout_constraintEnd_toEndOf="@+id/rv_notes"
             app:layout_constraintStart_toStartOf="parent"
