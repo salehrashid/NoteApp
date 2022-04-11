@@ -22,4 +22,3 @@ In This Project I have Learn About:
 - MVVM android app architecture
 - Wasabeef RecyclerView Animator
 - ViewModel
-- ASW
